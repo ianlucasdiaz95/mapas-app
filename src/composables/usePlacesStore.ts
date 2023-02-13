@@ -16,7 +16,13 @@ export const usePlacesStore = () => {
         //State
         isLoading: computed( () => store.state.places.isLoading ),
         userLocation: computed( () => store.state.places.userLocation ),
+        isLoadingPlaces: computed(() => store.state.places.isLoadingPlaces),
+        places: computed (() => store.state.places.places),
+
         //Getters
-        isUserlocationReady: computed<boolean>( () => store.getters['places/isUserlocationReady'] )
+        isUserlocationReady: computed<boolean>( () => store.getters['places/isUserlocationReady'] ),
+        
+        //Actions
+        searchPlacesByTerm: (query = '') => store.dispatch('places/searchPlacesByTerm', query)
     }
 }

@@ -14,10 +14,13 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { usePlacesStore } from '@/composables';
 import SearchResults from '@/components/SearchResults.vue'
 
 const debounceTimeout = ref();
 const debouncedValue = ref('');
+
+const { searchPlacesByTerm } = usePlacesStore();
 
 const searchTerm = computed({
   get(){
@@ -29,7 +32,8 @@ const searchTerm = computed({
 
     debounceTimeout.value = setTimeout(() => {
       debouncedValue.value = val
-    }, 1000);
+      searchPlacesByTerm(val);
+    }, 500);
 
   }
 })

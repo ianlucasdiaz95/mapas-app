@@ -1,4 +1,5 @@
 # mapas-app
+TypeScript, Vue, Mapbox, VueX
 
 ## Project setup
 ```
